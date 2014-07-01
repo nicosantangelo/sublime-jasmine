@@ -1,0 +1,21 @@
+Sorry to interrupt
+==================
+
+First of all, thanks for installing JasmineSyntax!
+
+Second, take into account that any other packages that are using 'javascript' as a syntax may not work with 'jasmine'.
+
+A notable example is SublimeLinter-jshint, where to fix this issue if you still want to use linting on your jasmine files you need to add a `syntax_map`
+to the SublimeLinter settings (http://www.sublimelinter.com/en/latest/global_settings.html#syntax-map), like this:
+
+"syntax_map": {
+    "html (django)": "html",
+    "html (rails)": "html",
+    "html 5": "html",
+    "jasmine": "javascript", //here
+    "php": "html",
+    "python django": "python"
+}
+
+
+Thanks again!.
