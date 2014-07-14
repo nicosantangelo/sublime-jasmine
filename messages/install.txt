@@ -1,21 +1,15 @@
-Sorry to interrupt
+Jasmine Pacakge
 ==================
 
-First of all, thanks for installing JasmineSyntax!
+First of all, thanks for installing Jasmine!
 
-Second, take into account that any other packages that are using 'javascript' as a syntax may not work with 'jasmine'.
+This package is a merge of two existing packages:
 
-A notable example is SublimeLinter-jshint, where to fix this issue if you still want to use linting on your jasmine files you need to add a `syntax_map`
-to the SublimeLinter settings (http://www.sublimelinter.com/en/latest/global_settings.html#syntax-map), like this:
+@caiogondim's https://github.com/caiogondim "Jasmine BDD" package has been combined with @gja's https://github.com/gja "Jasmine" package.
 
-"syntax_map": {
-    "html (django)": "html",
-    "html (rails)": "html",
-    "html 5": "html",
-    "jasmine": "javascript", //here
-    "php": "html",
-    "python django": "python"
-}
+For old users, all of the snippets still work, but now the package has new features like syntax highlighting and a 'toggle' command.
 
+Take into account that any other packages that are using `javascript` as a syntax may not work with the new `jasmine`. 
+You can always turn it back off by opening a `.spec.js` file and selecting "View > Syntax > Open all with current extension as... > Javascript".
 
-Thanks again!.
+Visit the repo (https://github.com/NicoSantangelo/sublime-jasmine) for more info or for any issues, thanks again!.
