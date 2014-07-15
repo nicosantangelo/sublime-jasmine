@@ -6,12 +6,19 @@ Sorry for the interruption!
 
 @caiogondim's https://github.com/caiogondim "Jasmine BDD" package has been combined with @gja's https://github.com/gja "Jasmine" package.
 
-For old users, everything should still work, but now the package has new features like:
+
+Old Jasmine Users
+--------------------
+
+Everything should still work, but now the package has new features like:
 Syntax highlighting and a 'toggle' command.
 
-Take into account that any other packages that are using `javascript` as a syntax may not work with the new `jasmine`. 
+Remember that any other package that is using `javascript` as a syntax may not work with the new `jasmine`.
 You can always turn it back off by opening a `.spec.js` file and selecting "View > Syntax > Open all with current extension as... > Javascript".
 
-Also, if you want a list of all snippets, create a issue or a feature request, head over to https://github.com/NicoSantangelo/sublime-jasmine
+Also, if you want a list of all snippets, create a issue or a feature request, head over to:
+https://github.com/NicoSantangelo/sublime-jasmine
+
+Lastly, if you're on windows, the commands may take a bit to work the first time, after that, it should work fine.
 
 Thanks!
