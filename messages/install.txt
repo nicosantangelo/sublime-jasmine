@@ -1,15 +1,14 @@
+
 Jasmine Pacakge
 ==================
 
 First of all, thanks for installing Jasmine!
 
 This package is a merge of two existing packages:
-
 @caiogondim's https://github.com/caiogondim "Jasmine BDD" package has been combined with @gja's https://github.com/gja "Jasmine" package.
 
-For old users, all of the snippets still work, but now the package has new features like syntax highlighting and a 'toggle' command.
+This repo provides a syntax highlighting, snippets and commands.
+If you want to know a bit more or for any issue or feature request, visit the repo (https://github.com/NicoSantangelo/sublime-jasmine).
 
-Take into account that any other packages that are using `javascript` as a syntax may not work with the new `jasmine`. 
-You can always turn it back off by opening a `.spec.js` file and selecting "View > Syntax > Open all with current extension as... > Javascript".
 
-Visit the repo (https://github.com/NicoSantangelo/sublime-jasmine) for more info or for any issues, thanks again!.
+Thanks again!
