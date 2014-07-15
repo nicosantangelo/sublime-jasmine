@@ -7,21 +7,25 @@ import functools
 class BaseCommand(sublime_plugin.TextCommand):
     def run(self, edit, split_view = False):
         self.load_settings()
-        self.create_base_spec_folder()
+        BaseFile.create_base_spec_folder(self.view, self.jasmine_path)
         self.split_view = split_view
-        self._run(edit)
+        self.defer(lambda: self._run(edit))
+
+    def defer(self, fn):
+        sublime.status_message("Jasmine: Indexing")
+        if int(sublime.version()) >= 3000:
+            sublime.set_timeout_async(lambda: self.call(fn), 0)
+        else:
+            self.call(fn)
+
+    def call(self, fn):
+        fn()
+        sublime.status_message("Jasmine: Done")
 
     def load_settings(self):
         settings = sublime.load_settings("Jasmine.sublime-settings")
         self.ignored_directories = settings.get("ignored_directories", [])
         self.jasmine_path = settings.get("jasmine_path", "spec")
-
-    def create_base_spec_folder(self):
-        base, _ = os.path.split(self.view.file_name())
-        for folder in self.window().folders():
-            spec_path = os.path.join(folder, self.jasmine_path)
-            if re.search(folder, base) and not os.path.exists(spec_path):
-                os.mkdir(spec_path)
 
     def window(self):
         return self.view.window()
@@ -39,7 +43,8 @@ class JasmineToggleCommand(BaseCommand):
             SpecFileInterface(self).interact()
 
     def reduce_alternatives(self, file_type):
-        alternates = self.project_files(lambda file: file in file_type.possible_alternate_files())
+        possible_alternate_files = file_type.possible_alternate_files()
+        alternates = self.project_files(lambda file: file in possible_alternate_files)
         for alternate in alternates:
             if re.search(file_type.parent_dir_name(), alternate):
                 alternates = [alternate]
@@ -104,6 +109,19 @@ class BaseFile():
     def parent_dir_name(self):
         head_dir, tail_dir = os.path.split(self.folder_name)
         return tail_dir
+
+    @classmethod
+    def create_base_spec_folder(cls, view, base_spec_path):
+        base, _ = os.path.split(view.file_name())
+        for folder in view.window().folders():
+            spec_path = os.path.join(folder, base_spec_path)
+            if re.search(cls.normalize(folder), cls.normalize(base)) and not os.path.exists(spec_path):
+                os.mkdir(spec_path)
+
+    @classmethod
+    def normalize(self, path):
+        return path.replace("\\", "\\\\")
+
 
 class JSFile(BaseFile):
     def possible_alternate_files(self):
@@ -219,6 +237,7 @@ class SpecFileInterface():
 
         view = self.window.open_file(path)
         sublime.set_timeout(lambda: view.run_command("insert_snippet", { "name": "Packages/Jasmine/snippets/describe.sublime-snippet" }), 0)
+
 
     def create_folders(self, filename):
         base, filename = os.path.split(filename)
