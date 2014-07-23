@@ -8,5 +8,9 @@
         "caption": "Jasmine: Create spec file",
         "command": "jasmine_create_spec",
         "args": { "split_view": false }
+    },
+    {
+        "caption": "Jasmine (legacy): Switch between code and spec",
+        "command": "legacy_jasmine_toggle"
     }
 ]
