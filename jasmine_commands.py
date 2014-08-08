@@ -45,11 +45,25 @@ class JasmineToggleCommand(BaseCommand):
     def reduce_alternatives(self, file_type):
         possible_alternate_files = file_type.possible_alternate_files()
         alternates = self.project_files(lambda file: file in possible_alternate_files)
+
+        self.jasmine_path_in_folder_name = file_type.folder_contains(self.jasmine_path)
+        base_path, _ = file_type.split_folder_path_after(self.jasmine_path)
+
         for alternate in alternates:
-            if re.search(file_type.parent_dir_name(), alternate):
+            if not self.jasmine_path_in_folder_name:
+                base_path, _ = BaseFile.split_after(alternate, self.jasmine_path)
+
+            if self.alternate_exists_in_path(base_path, alternate) or self.file_type_exists_in_path(base_path, file_type):
                 alternates = [alternate]
                 break
+
         return alternates
+
+    def alternate_exists_in_path(self, base_path, alternate):
+        return self.jasmine_path_in_folder_name and re.search(base_path, alternate)
+
+    def file_type_exists_in_path(self, base_path, file_type):
+        return not self.jasmine_path_in_folder_name and re.search(base_path, file_type.folder_name)
 
     def show_alternatives(self, alternates):
         if self.split_view:
@@ -110,6 +124,15 @@ class BaseFile():
         head_dir, tail_dir = os.path.split(self.folder_name)
         return tail_dir
 
+    def split_folder_path_after(self, path):
+        if self.folder_contains(path):
+            return BaseFile.split_after(self.folder_name, path)
+        else:
+            return (None, None)
+
+    def folder_contains(self, path):
+        return re.search(path, self.folder_name)
+
     @classmethod
     def create_base_spec_folder(cls, view, base_spec_path):
         base, _ = os.path.split(view.file_name())
@@ -119,7 +142,12 @@ class BaseFile():
                 os.mkdir(spec_path)
 
     @classmethod
-    def normalize(self, path):
+    def split_after(cls, base_path, reference_path):
+        head, _ = base_path.split(reference_path, 1)
+        return os.path.split(head)
+
+    @classmethod
+    def normalize(cls, path):
         return path.replace("\\", "\\\\")
 
 
