@@ -30,7 +30,7 @@ class BaseCommand(sublime_plugin.TextCommand):
     def window(self):
         return self.view.window()
 
-class JasmineToggleCommand(BaseCommand):
+class JasmineSwitchCommand(BaseCommand):
     def _run(self, edit):
         file_type = self.file_type()
         if not file_type:

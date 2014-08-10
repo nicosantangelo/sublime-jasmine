@@ -6,7 +6,7 @@ import time
 import sublime
 import sublime_plugin
 
-class LegacyJasmineToggleCommand(sublime_plugin.TextCommand):
+class LegacyJasmineSwitchCommand(sublime_plugin.TextCommand):
   def window(self):
     return self.view.window()
 
@@ -23,11 +23,11 @@ class LegacyJasmineToggleCommand(sublime_plugin.TextCommand):
   def current_file(self):
     file_name = self.view.file_name()
     if re.search('\w+[_|.]spec.js', file_name):
-      return LegacyJasmineToggleCommand.JasmineFile(file_name)
+      return LegacyJasmineSwitchCommand.JasmineFile(file_name)
     elif re.search('\w+\.js', file_name):
-      return LegacyJasmineToggleCommand.JavascriptFile(file_name)
+      return LegacyJasmineSwitchCommand.JavascriptFile(file_name)
     else:
-      return LegacyJasmineToggleCommand.BaseFile(file_name)
+      return LegacyJasmineSwitchCommand.BaseFile(file_name)
 
   def run(self, args):
     possible_alternates = self.current_file().possible_alternate_files()

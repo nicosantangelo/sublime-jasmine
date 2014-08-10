@@ -1,7 +1,7 @@
 [
     {
         "caption": "Jasmine: Switch between code and spec",
-        "command": "jasmine_toggle",
+        "command": "jasmine_switch",
         "args": { "split_view": false }
     },
     {
@@ -11,6 +11,6 @@
     },
     {
         "caption": "Jasmine (legacy): Switch between code and spec",
-        "command": "legacy_jasmine_toggle"
+        "command": "legacy_jasmine_switch"
     }
 ]
