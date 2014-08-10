@@ -4,21 +4,25 @@ Jasmine Pacakge
 
 Sorry for the interruption!
 
-@caiogondim's https://github.com/caiogondim "Jasmine BDD" package has been combined with @gja's https://github.com/gja "Jasmine" package.
+This is just to let you know that @caiogondim's https://github.com/caiogondim "Jasmine BDD" package has been combined with
+@gja's https://github.com/gja "Jasmine" package, adding some new features in the process.
+
+The idea is to have a unified Jasmine package for Sublime Text, that provides Commands, Snippets and Syntax.
+
+For a bit more info, you can visit the package Github repo: https://github.com/NicoSantangelo/sublime-jasmine
 
 
 Old Jasmine Users
 --------------------
 
-Everything should still work, but now the package has new features like:
-Syntax highlighting and a 'toggle' command.
+Everything should still work, but the old "Jasmine: Switch between code and spec" has been replaced (hopefully for the better).
+If you still want to use the old command, you can pick "Jasmine (legacy): Switch between code and spec" from the command pallete.
 
-Remember that any other package that is using `javascript` as a syntax may not work with the new `jasmine`.
-You can always turn it back off by opening a `.spec.js` file and selecting "View > Syntax > Open all with current extension as... > Javascript".
+Also, if you're on windows, the commands may take a bit to work the first time, after that, it should work fine.
 
-Also, if you want a list of all snippets, create a issue or a feature request, head over to:
-https://github.com/NicoSantangelo/sublime-jasmine
+--------------------
 
-Lastly, if you're on windows, the commands may take a bit to work the first time, after that, it should work fine.
+
+If you have any problems or you want to create an issue or a feature request, please let me know!
 
 Thanks!
