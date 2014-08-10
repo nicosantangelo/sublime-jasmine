@@ -13,10 +13,7 @@ class BaseCommand(sublime_plugin.TextCommand):
 
     def defer(self, fn):
         sublime.status_message("Jasmine: Indexing")
-        if int(sublime.version()) >= 3000:
-            sublime.set_timeout_async(lambda: self.call(fn), 0)
-        else:
-            self.call(fn)
+        self.call(fn) 
 
     def call(self, fn):
         fn()
@@ -143,8 +140,8 @@ class BaseFile():
 
     @classmethod
     def split_after(cls, base_path, reference_path):
-        head, _ = base_path.split(reference_path, 1)
-        return os.path.split(head)
+        head, tail = base_path.split(reference_path, 1)
+        return os.path.split(tail)
 
     @classmethod
     def normalize(cls, path):
