@@ -136,7 +136,10 @@ class BaseFile():
         for folder in view.window().folders():
             spec_path = os.path.join(folder, base_spec_path)
             if re.search(cls.normalize(folder), cls.normalize(base)) and not os.path.exists(spec_path):
-                os.mkdir(spec_path)
+                try:
+                    os.mkdir(spec_path)
+                except FileNotFoundError:
+                    sublime.status_message("Jasmine: Error creating the spec folder on %s. Maybe the jasmine_path is missing a folder?" % spec_path)
 
     @classmethod
     def split_after(cls, base_path, reference_path):
