@@ -3,5 +3,8 @@
     "ignored_directories": [".git", "vendor", "tmp", "node_modules"],
 
     // The parent folder name for the spec files
+    // Windows users:
+    //	The path in ST on windows uses '\\' to separate names,
+    //	so you might have to do something like "spec\\javascripts" if you need a nested path.
     "jasmine_path": "spec"
 }
