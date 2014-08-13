@@ -57,10 +57,10 @@ class JasmineSwitchCommand(BaseCommand):
         return alternates
 
     def alternate_exists_in_path(self, base_path, alternate):
-        return self.jasmine_path_in_folder_name and re.search(base_path, alternate)
+        return self.jasmine_path_in_folder_name and alternate.find(base_path) >= 0
 
     def file_type_exists_in_path(self, base_path, file_type):
-        return not self.jasmine_path_in_folder_name and re.search(base_path, file_type.folder_name)
+        return not self.jasmine_path_in_folder_name and file_type.folder_name.find(base_path) >= 0
 
     def show_alternatives(self, alternates):
         if self.split_view:
@@ -128,14 +128,14 @@ class BaseFile():
             return (None, None)
 
     def folder_contains(self, path):
-        return re.search(path, self.folder_name)
+        return self.folder_name.find(path) >= 0
 
     @classmethod
     def create_base_spec_folder(cls, view, base_spec_path):
         base, _ = os.path.split(view.file_name())
         for folder in view.window().folders():
             spec_path = os.path.join(folder, base_spec_path)
-            if re.search(cls.normalize(folder), cls.normalize(base)) and not os.path.exists(spec_path):
+            if base.find(folder) >= 0 and not os.path.exists(spec_path):
                 try:
                     os.mkdir(spec_path)
                 except FileNotFoundError:
@@ -143,12 +143,8 @@ class BaseFile():
 
     @classmethod
     def split_after(cls, base_path, reference_path):
-        head, tail = base_path.split(reference_path, 1)
-        return os.path.split(tail)
-
-    @classmethod
-    def normalize(cls, path):
-        return path.replace("\\", "\\\\")
+        splitted = base_path.split(reference_path, 1)
+        return os.path.split(splitted[1]) if len(splitted) > 1 else (splitted[0], None)
 
 
 class JSFile(BaseFile):
@@ -224,8 +220,8 @@ class SpecFileInterface():
         return folders
 
     def is_valid_path(self, path):
-        if not re.search(self.jasmine_path, self.current_file):
-            return re.search(self.jasmine_path, path)
+        if not self.current_file.find(self.jasmine_path) >= 0:
+            return path.find(self.jasmine_path) >= 0
         return True
 
     def dir_selected(self, selected_index):
@@ -239,7 +235,7 @@ class SpecFileInterface():
         return self.set_file_name(path, current_file)
 
     def set_file_name(self, path, current_file):
-        if re.search(self.jasmine_path, self.current_file):
+        if self.current_file.find(self.jasmine_path) >= 0:
             return re.sub('.spec.js|_spec.js', '.js', current_file)
         else:
             return current_file.replace('.js', '.spec.js')
