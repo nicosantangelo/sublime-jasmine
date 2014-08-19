@@ -15,10 +15,12 @@ For a bit more info, you can visit the package Github repo: https://github.com/N
 Old Jasmine Users
 --------------------
 
-Everything should still work, but the old "Jasmine: Switch between code and spec" has been replaced (hopefully for the better).
-If you still want to use the old command, you can pick "Jasmine (legacy): Switch between code and spec" from the command pallete.
+Everything should still work, but:
 
-Also, if you're on windows, the commands may take a bit to work the first time, after that, it should work fine.
+* The old "Jasmine: Switch between code and spec" has been replaced (hopefully for the better).
+  If you still want to use the old command, you can pick "Jasmine (legacy): Switch between code and spec" from the command pallete.
+
+* The snippets triggers may have change (you can see all of them on the Github page).
 
 --------------------
 
