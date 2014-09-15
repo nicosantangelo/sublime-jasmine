@@ -1,7 +1,4 @@
 
-Jasmine Pacakge
-==================
-
 Sorry for the interruption!
 
 This is just to let you know that @caiogondim's https://github.com/caiogondim "Jasmine BDD" package has been combined with

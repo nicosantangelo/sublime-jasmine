@@ -1,7 +1,4 @@
 
-Jasmine Pacakge
-==================
-
 First of all, thanks for installing Jasmine!
 
 This package is a merge of two existing packages:
