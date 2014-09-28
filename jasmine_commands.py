@@ -214,11 +214,12 @@ class SpecFileInterface():
                 dirs.remove(ignored_dir)
 
     def active_project(self, folders):
+        result = list(folders)
         for folder in folders:
             project_name = os.path.split(folder)[-1]
-            if re.search(project_name, self.current_file):
-                return [folder]
-        return folders
+            if not re.search(project_name, self.current_file):
+                result.remove(folder)
+        return result
 
     def is_valid_path(self, path):
         if not self.current_file.find(self.jasmine_path) >= 0:
