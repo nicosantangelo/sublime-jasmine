@@ -240,6 +240,7 @@ class SpecFileInterface():
         if self.current_file.find(self.jasmine_path) >= 0:
             return re.sub('.spec.js|_spec.js|-spec.js', '.js', current_file)
         else:
+            # TODO: Move .spec.js to a setting
             return current_file.replace('.js', '.spec.js')
 
     def file_name_input(self, file_name):
@@ -262,7 +263,7 @@ class SpecFileInterface():
             f.write("")
 
         view = self.window.open_file(path)
-        sublime.set_timeout(lambda: view.run_command("insert_snippet", { "name": "Packages/Jasmine/snippets/describe.sublime-snippet" }), 0)
+        sublime.set_timeout(lambda: view.run_command("insert_snippet", { "name": 'Packages/Jasmine/snippets/describe.sublime-snippet' }), 5)
 
 
     def create_folders(self, filename):
