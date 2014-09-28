@@ -151,6 +151,7 @@ class JSFile(BaseFile):
     def possible_alternate_files(self):
         return [
             self.file_name.replace(".js", "_spec.js"),
+            self.file_name.replace(".js", "-spec.js"),
             self.file_name.replace(".js", ".spec.js")
         ]
 
@@ -160,13 +161,13 @@ class JSFile(BaseFile):
 
 class JasmineFile(BaseFile):
     def possible_alternate_files(self):
-        possible_set = set([self.file_name.replace("_spec.js", ".js"), self.file_name.replace(".spec.js", ".js")])
+        possible_set = set([self.file_name.replace("_spec.js", ".js"),self.file_name.replace("-spec.js", ".js"), self.file_name.replace(".spec.js", ".js")])
         file_name_set = set([self.file_name])
         return list(possible_set - file_name_set)
 
     @classmethod
     def test(cls, file_name):
-        return re.search('\w+\.spec.js', file_name) or re.search('\w+\_spec.js', file_name)
+        return re.search('\w+\.spec.js', file_name) or re.search('\w+\_spec.js', file_name) or re.search('\w+\-spec.js', file_name)
 
 class SpecFileInterface():
     relative_paths = []
@@ -236,7 +237,7 @@ class SpecFileInterface():
 
     def set_file_name(self, path, current_file):
         if self.current_file.find(self.jasmine_path) >= 0:
-            return re.sub('.spec.js|_spec.js', '.js', current_file)
+            return re.sub('.spec.js|_spec.js|-spec.js', '.js', current_file)
         else:
             return current_file.replace('.js', '.spec.js')
 
