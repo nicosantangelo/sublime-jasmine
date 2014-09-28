@@ -161,7 +161,7 @@ class JSFile(BaseFile):
 
 class JasmineFile(BaseFile):
     def possible_alternate_files(self):
-        possible_set = set([self.file_name.replace("_spec.js", ".js"),self.file_name.replace("-spec.js", ".js"), self.file_name.replace(".spec.js", ".js")])
+        possible_set = set([self.file_name.replace("_spec.js", ".js"), self.file_name.replace("-spec.js", ".js"), self.file_name.replace(".spec.js", ".js")])
         file_name_set = set([self.file_name])
         return list(possible_set - file_name_set)
 
