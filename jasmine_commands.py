@@ -23,6 +23,7 @@ class BaseCommand(sublime_plugin.TextCommand):
         settings = sublime.load_settings("Jasmine.sublime-settings")
         self.ignored_directories = settings.get("ignored_directories", [])
         self.jasmine_path = settings.get("jasmine_path", "spec")
+        self.spec_file_extension = settings.get("spec_file_extension", ".spec.js")
 
     def window(self):
         return self.view.window()
@@ -176,6 +177,7 @@ class SpecFileInterface():
     def __init__(self, command):
         self.ignored_directories = command.ignored_directories
         self.jasmine_path = command.jasmine_path
+        self.spec_file_extension = command.spec_file_extension
         self.window = command.window()
         self.current_file = command.view.file_name()
         self.split_view = command.split_view
@@ -238,7 +240,7 @@ class SpecFileInterface():
         if self.current_file.find(self.jasmine_path) >= 0:
             return re.sub('.spec.js|_spec.js', '.js', current_file)
         else:
-            return current_file.replace('.js', '.spec.js')
+            return current_file.replace('.js', self.spec_file_extension)
 
     def file_name_input(self, file_name):
         full_path = os.path.join(self.selected_dir, file_name)

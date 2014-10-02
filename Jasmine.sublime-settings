@@ -6,5 +6,10 @@
     // Windows users:
     //	The path in ST on windows uses '\\' to separate names,
     //	so you might have to do something like "spec\\javascripts" if you need a nested path.
-    "jasmine_path": "spec"
+    "jasmine_path": "spec",
+
+    // Extension used when creating a new spec file. 
+    // If used with 'Switch file', it will replace the .js for the source file. For example, by default:
+    //  script.js  -->  script.spec.js
+    "spec_file_extension": ".spec.js"
 }
