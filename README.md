@@ -101,7 +101,10 @@ There are two possible settings:
     "ignored_directories": [".git", "vendor", "tmp", "node_modules"],
 
     // The parent folder name for the spec files
-    "jasmine_path": "spec"
+    "jasmine_path": "spec",
+
+    // Extension used when creating a new spec file. 
+    "spec_file_extension": ".spec.js"
 }
 ```
 
