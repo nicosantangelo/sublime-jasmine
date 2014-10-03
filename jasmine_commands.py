@@ -152,6 +152,7 @@ class JSFile(BaseFile):
     def possible_alternate_files(self):
         return [
             self.file_name.replace(".js", "_spec.js"),
+            self.file_name.replace(".js", "-spec.js"),
             self.file_name.replace(".js", ".spec.js")
         ]
 
@@ -161,13 +162,13 @@ class JSFile(BaseFile):
 
 class JasmineFile(BaseFile):
     def possible_alternate_files(self):
-        possible_set = set([self.file_name.replace("_spec.js", ".js"), self.file_name.replace(".spec.js", ".js")])
+        possible_set = set([self.file_name.replace("_spec.js", ".js"), self.file_name.replace("-spec.js", ".js"), self.file_name.replace(".spec.js", ".js")])
         file_name_set = set([self.file_name])
         return list(possible_set - file_name_set)
 
     @classmethod
     def test(cls, file_name):
-        return re.search('\w+\.spec.js', file_name) or re.search('\w+\_spec.js', file_name)
+        return re.search('\w+\.spec.js', file_name) or re.search('\w+\_spec.js', file_name) or re.search('\w+\-spec.js', file_name)
 
 class SpecFileInterface():
     relative_paths = []
@@ -215,11 +216,12 @@ class SpecFileInterface():
                 dirs.remove(ignored_dir)
 
     def active_project(self, folders):
+        result = list(folders)
         for folder in folders:
             project_name = os.path.split(folder)[-1]
-            if re.search(project_name, self.current_file):
-                return [folder]
-        return folders
+            if not re.search(project_name, self.current_file):
+                result.remove(folder)
+        return result
 
     def is_valid_path(self, path):
         if not self.current_file.find(self.jasmine_path) >= 0:
@@ -238,7 +240,7 @@ class SpecFileInterface():
 
     def set_file_name(self, path, current_file):
         if self.current_file.find(self.jasmine_path) >= 0:
-            return re.sub('.spec.js|_spec.js', '.js', current_file)
+            return re.sub('.spec.js|_spec.js|-spec.js', '.js', current_file)
         else:
             return current_file.replace('.js', self.spec_file_extension)
 
@@ -262,7 +264,7 @@ class SpecFileInterface():
             f.write("")
 
         view = self.window.open_file(path)
-        sublime.set_timeout(lambda: view.run_command("insert_snippet", { "name": "Packages/Jasmine/snippets/describe.sublime-snippet" }), 0)
+        sublime.set_timeout(lambda: view.run_command("insert_snippet", { "name": 'Packages/Jasmine/snippets/describe.sublime-snippet' }), 5)
 
 
     def create_folders(self, filename):
