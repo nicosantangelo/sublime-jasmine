@@ -1,0 +1,10 @@
+Recent Changes
+==============
+
+New setting!
+
+If you don't like using the extension `.spec.js` when creating the spec files now you can use the setting `spec_file_extension`.
+
+The string you pass will be replaced for the `.js` extension of your javascript file, by default it's still `.spec.js` 
+
+That's all, thanks!
