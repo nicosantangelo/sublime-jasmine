@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+fit("${1:should behave...}", function() {
+    $2
+});]]>
+    </content>
+    <tabTrigger><![CDATA[fit]]></tabTrigger>
+    <scope>source.js</scope>
+    <description>focused it</description>
+</snippet>
