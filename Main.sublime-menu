@@ -79,6 +79,12 @@
                       "platform": "Windows"
                   },
                   "caption": "Key Bindings – User"
+              },
+              { "caption": "-" },
+              // README
+              {
+                  "caption": "View README in Github",
+                  "command": "open_url", "args": { "url": "https://github.com/NicoSantangelo/sublime-jasmine#jasmine" }
               }
             ]
           }
