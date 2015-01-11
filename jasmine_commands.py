@@ -3,6 +3,7 @@ import sublime, sublime_plugin
 import re
 import os
 import functools
+from glob import glob
 
 class BaseCommand(sublime_plugin.TextCommand):
     def run(self, edit, split_view = False):
@@ -96,6 +97,24 @@ class JasmineSwitchCommand(BaseCommand):
 class JasmineCreateSpecCommand(BaseCommand):
     def _run(self, edit):
         SpecFileInterface(self).interact()
+
+class JasmineToggleQuotes(sublime_plugin.TextCommand):
+    snippets_path = os.path.join(sublime.packages_path(), 'Jasmine', 'snippets')
+
+    def run(self, edit):
+        active_snippets   = os.path.join(self.snippets_path, '**', '*.sublime-snippet')
+        inactive_snippets = os.path.join(self.snippets_path, '**', '*.sublime-snippetx')
+        
+        self.replace_extensions(glob(active_snippets), '.sublime-snippet', '.sublime-snippetx')
+        self.replace_extensions(glob(inactive_snippets), '.sublime-snippetx', '.sublime-snippet')
+
+        inactive_snippets_dir = os.path.basename(os.path.dirname(inactive_snippets[0]))
+        sublime.status_message("Jasmine: Making %s active" % inactive_snippets_dir)
+
+    def replace_extensions(self, snippets, current, replacement):
+        for snippet in snippets:
+            os.rename(snippet, snippet.replace(current, replacement))
+
 
 ##
 # Classes
