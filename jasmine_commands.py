@@ -102,19 +102,18 @@ class JasmineToggleQuotes(sublime_plugin.TextCommand):
     snippets_path = os.path.join(sublime.packages_path(), 'Jasmine', 'snippets')
 
     def run(self, edit):
-        active_snippets   = os.path.join(self.snippets_path, '**', '*.sublime-snippet')
-        inactive_snippets = os.path.join(self.snippets_path, '**', '*.sublime-snippetx')
+        active_replacer = SnippetReplacer('.sublime-snippet')
+        inactive_replacer = SnippetReplacer('.sublime-snippetx')
+
+        active_replacer.replace()
+        inactive_replacer.replace()
         
-        self.replace_extensions(glob(active_snippets), '.sublime-snippet', '.sublime-snippetx')
-        self.replace_extensions(glob(inactive_snippets), '.sublime-snippetx', '.sublime-snippet')
+        sublime.status_message("Jasmine: Making %s active" % inactive_replacer.dirname())
 
-        inactive_snippets_dir = os.path.basename(os.path.dirname(inactive_snippets[0]))
-        sublime.status_message("Jasmine: Making %s active" % inactive_snippets_dir)
-
-    def replace_extensions(self, snippets, current, replacement):
+    def replace_extensions(self, snippets_path, current, replacement):
+        snippets = glob(snippets_path)
         for snippet in snippets:
             os.rename(snippet, snippet.replace(current, replacement))
-
 
 ##
 # Classes
@@ -293,3 +292,21 @@ class SpecFileInterface():
             if not os.path.exists(parent):
                 self.create_folders(parent)
             os.mkdir(base)
+
+class SnippetReplacer():
+    snippets_path = os.path.join(sublime.packages_path(), 'Jasmine JS', 'snippets')
+
+    def __init__(self, current):
+        token = 'x'
+        self.current     = current
+        self.replacement = current.replace(token, '') if token in current else current + token
+        
+        path = os.path.join(self.snippets_path, '**', '*' + current)
+        self.snippets = glob(path)
+
+    def replace(self):
+        for snippet in self.snippets:
+            os.rename(snippet, snippet.replace(self.current, self.replacement))
+
+    def dirname(self):
+        return os.path.basename(os.path.dirname(self.snippets[0]))
