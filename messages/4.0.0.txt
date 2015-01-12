@@ -1,7 +1,12 @@
 Recent Changes
 ==============
 
-New setting!
+New command!
+
+
+-----
+
+Also if you didn't see it:
 
 If you don't like using the extension `.spec.js` when creating the spec files now you can use the setting `spec_file_extension`.
 
