@@ -13,13 +13,13 @@
       "include": "source.js"
     },
     {
-      "match": "^\\s*(x?describe)\\(",
+      "match": "^\\s*((x|f)?describe)\\(",
         "captures": {
           "1": { "name": "storage.type.js" }
         }
     },
     {
-      "match": "^\\s*(x?it)\\(",
+      "match": "^\\s*((x|f)?it)\\(",
         "captures": {
           "1": { "name": "storage.type.js" }
         }
