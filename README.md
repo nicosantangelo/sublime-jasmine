@@ -92,6 +92,14 @@ If you want to setup a keybinding for it, you can use:
 
 `{ "keys": ["KEYS"], "command": "legacy_jasmine_switch" }`
 
+### Toggle quotes
+
+This command will change the snippets from the current active quotes to it's counterpart.
+
+If you want to setup a keybinding for it, you can use:
+
+`{ "keys": ["KEYS"], "command": "jasmine_toggle_quotes" }`
+
 ### Command Settings
 
 There are two possible settings:
