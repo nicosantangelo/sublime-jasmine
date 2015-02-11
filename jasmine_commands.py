@@ -102,11 +102,13 @@ class JasmineToggleQuotes(sublime_plugin.TextCommand):
     def run(self, edit):
         active_replacer = SnippetReplacer('.sublime-snippet')
         inactive_replacer = SnippetReplacer('.sublime-snippetx')
-
-        active_replacer.replace()
-        inactive_replacer.replace()
-        
-        sublime.status_message("Jasmine: Making %s active" % inactive_replacer.dirname())
+        if active_replacer.has_snippets() and inactive_replacer.has_snippets():
+            active_replacer.replace()
+            inactive_replacer.replace()
+            
+            sublime.status_message("Jasmine: Making %s active" % inactive_replacer.dirname())
+        else:
+            sublime.status_message("Jasmine: couldn't find snippets in: %s" % SnippetReplacer.snippets_path())
 
 ##
 # Classes
@@ -291,7 +293,7 @@ class SnippetReplacer():
         self.current     = current
         self.replacement = current.replace(token, '') if token in current else current + token
         
-        path = os.path.join(self.snippets_path, '**', '*' + current)
+        path = os.path.join(SnippetReplacer.snippets_path(), '**', '*' + current)
         self.snippets = glob(path)
 
     def replace(self):
@@ -299,7 +301,15 @@ class SnippetReplacer():
             os.rename(snippet, snippet.replace(self.current, self.replacement))
 
     def dirname(self):
-        return os.path.basename(os.path.dirname(self.snippets[0]))
+        if self.has_snippets():
+            first_snippet = self.snippets[0]
+            return os.path.basename(os.path.dirname(first_snippet))
+        else:
+            return ''
 
-    def snippets_path(self):
+    def has_snippets(self):
+        return len(self.snippets) > 0
+
+    @classmethod
+    def snippets_path(cls):
         return os.path.join(sublime.packages_path(), 'Jasmine JS', 'snippets')
