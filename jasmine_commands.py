@@ -3,6 +3,7 @@ import sublime, sublime_plugin
 import re
 import os
 import functools
+from glob import glob
 
 class BaseCommand(sublime_plugin.TextCommand):
     def run(self, edit, split_view = False):
@@ -96,6 +97,18 @@ class JasmineSwitchCommand(BaseCommand):
 class JasmineCreateSpecCommand(BaseCommand):
     def _run(self, edit):
         SpecFileInterface(self).interact()
+
+class JasmineToggleQuotes(sublime_plugin.TextCommand):
+    def run(self, edit):
+        active_replacer = SnippetReplacer('.sublime-snippet')
+        inactive_replacer = SnippetReplacer('.sublime-snippetx')
+        if active_replacer.has_snippets() and inactive_replacer.has_snippets():
+            active_replacer.replace()
+            inactive_replacer.replace()
+            
+            sublime.status_message("Jasmine: Making %s active" % inactive_replacer.dirname())
+        else:
+            sublime.status_message("Jasmine: couldn't find snippets in: %s" % SnippetReplacer.snippets_path())
 
 ##
 # Classes
@@ -266,7 +279,6 @@ class SpecFileInterface():
         view = self.window.open_file(path)
         sublime.set_timeout(lambda: view.run_command("insert_snippet", { "name": 'Packages/Jasmine/snippets/describe.sublime-snippet' }), 5)
 
-
     def create_folders(self, filename):
         base, filename = os.path.split(filename)
         if not os.path.exists(base):
@@ -274,3 +286,30 @@ class SpecFileInterface():
             if not os.path.exists(parent):
                 self.create_folders(parent)
             os.mkdir(base)
+
+class SnippetReplacer():
+    def __init__(self, current):
+        token = 'x'
+        self.current     = current
+        self.replacement = current.replace(token, '') if token in current else current + token
+        
+        path = os.path.join(SnippetReplacer.snippets_path(), '**', '*' + current)
+        self.snippets = glob(path)
+
+    def replace(self):
+        for snippet in self.snippets:
+            os.rename(snippet, snippet.replace(self.current, self.replacement))
+
+    def dirname(self):
+        if self.has_snippets():
+            first_snippet = self.snippets[0]
+            return os.path.basename(os.path.dirname(first_snippet))
+        else:
+            return ''
+
+    def has_snippets(self):
+        return len(self.snippets) > 0
+
+    @classmethod
+    def snippets_path(cls):
+        return os.path.join(sublime.packages_path(), 'Jasmine JS', 'snippets')

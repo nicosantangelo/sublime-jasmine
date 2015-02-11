@@ -10,6 +10,10 @@
         "args": { "split_view": false }
     },
     {
+        "caption": "Jasmine: Toggle quotes",
+        "command": "jasmine_toggle_quotes"
+    },
+    {
         "caption": "Jasmine (legacy): Switch between code and spec",
         "command": "legacy_jasmine_switch"
     }

@@ -1,7 +1,17 @@
 Recent Changes
 ==============
 
-New setting!
+New command! Toggle quotes
+
+This command will change the snippets from the current active quotes to it's counterpart.
+
+If you want to setup a keybinding for it, you can use:
+
+`{ "keys": ["KEYS"], "command": "jasmine_toggle_quotes" }`
+
+-----
+
+Also if you didn't see it:
 
 If you don't like using the extension `.spec.js` when creating the spec files now you can use the setting `spec_file_extension`.
 
