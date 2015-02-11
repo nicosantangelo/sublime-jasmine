@@ -99,8 +99,6 @@ class JasmineCreateSpecCommand(BaseCommand):
         SpecFileInterface(self).interact()
 
 class JasmineToggleQuotes(sublime_plugin.TextCommand):
-    snippets_path = os.path.join(sublime.packages_path(), 'Jasmine', 'snippets')
-
     def run(self, edit):
         active_replacer = SnippetReplacer('.sublime-snippet')
         inactive_replacer = SnippetReplacer('.sublime-snippetx')
@@ -109,11 +107,6 @@ class JasmineToggleQuotes(sublime_plugin.TextCommand):
         inactive_replacer.replace()
         
         sublime.status_message("Jasmine: Making %s active" % inactive_replacer.dirname())
-
-    def replace_extensions(self, snippets_path, current, replacement):
-        snippets = glob(snippets_path)
-        for snippet in snippets:
-            os.rename(snippet, snippet.replace(current, replacement))
 
 ##
 # Classes
