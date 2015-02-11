@@ -277,7 +277,6 @@ class SpecFileInterface():
         view = self.window.open_file(path)
         sublime.set_timeout(lambda: view.run_command("insert_snippet", { "name": 'Packages/Jasmine/snippets/describe.sublime-snippet' }), 5)
 
-
     def create_folders(self, filename):
         base, filename = os.path.split(filename)
         if not os.path.exists(base):
@@ -287,8 +286,6 @@ class SpecFileInterface():
             os.mkdir(base)
 
 class SnippetReplacer():
-    snippets_path = os.path.join(sublime.packages_path(), 'Jasmine JS', 'snippets')
-
     def __init__(self, current):
         token = 'x'
         self.current     = current
@@ -303,3 +300,6 @@ class SnippetReplacer():
 
     def dirname(self):
         return os.path.basename(os.path.dirname(self.snippets[0]))
+
+    def snippets_path(self):
+        return os.path.join(sublime.packages_path(), 'Jasmine JS', 'snippets')
