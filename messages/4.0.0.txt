@@ -5,16 +5,26 @@ New command! Toggle quotes
 
 This command will change the snippets from the current active quotes to it's counterpart.
 
-If you want to setup a keybinding for it, you can use:
+For example, it will transform this:
 
-`{ "keys": ["KEYS"], "command": "jasmine_toggle_quotes" }`
+describe("Name of the group", function() {
+    
+});
 
------
+to this
 
-Also if you didn't see it:
+describe('Name of the group', function() {
+    
+});
 
-If you don't like using the extension `.spec.js` when creating the spec files now you can use the setting `spec_file_extension`.
 
-The string you pass will be replaced for the `.js` extension of your javascript file, by default it's still `.spec.js` 
+IMPORTANT:
+
+1. After each toggle you may need to restart Sublime to the changes to take effect (sorry for that).
+
+2. If you're seeing the snippets twice, is because Package Control didn't update the package to the last version correctly. If it doesn't get fix automatically, please reinstall the package.
+
+
+For more info, issues or feature requests you can go to: https://github.com/NicoSantangelo/sublime-jasmine
 
 That's all, thanks!

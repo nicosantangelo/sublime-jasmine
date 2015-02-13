@@ -96,9 +96,29 @@ If you want to setup a keybinding for it, you can use:
 
 This command will change the snippets from the current active quotes to it's counterpart.
 
+For example, it will transform this:
+
+````
+describe("Name of the group", function() {
+    
+});
+````
+
+to this
+
+````
+describe('Name of the group', function() {
+    
+});
+````
+
 If you want to setup a keybinding for it, you can use:
 
 `{ "keys": ["KEYS"], "command": "jasmine_toggle_quotes" }`
+
+**Important!**
+
+After each toggle you may need to restart Sublime to the changes to take effect.
 
 ### Command Settings
 
