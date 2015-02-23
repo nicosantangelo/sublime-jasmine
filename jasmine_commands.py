@@ -105,10 +105,20 @@ class JasmineToggleQuotes(sublime_plugin.TextCommand):
         if active_replacer.has_snippets() and inactive_replacer.has_snippets():
             active_replacer.replace()
             inactive_replacer.replace()
-            
-            sublime.status_message("Jasmine: Making %s active" % inactive_replacer.dirname())
+
+            self.show_output_panel("Jasmine: Making %s active.\n\nAfter each toggle you may need to restart Sublime to the changes to take effect." % inactive_replacer.dirname())
         else:
             sublime.status_message("Jasmine: couldn't find snippets in: %s" % SnippetReplacer.snippets_path())
+
+    def show_output_panel(self, text):
+        window = self.view.window()
+        output_view = window.get_output_panel("jasmineoutput")
+
+        output_view.set_read_only(False)
+        output_view.run_command("append", { "characters": text })
+        output_view.set_read_only(True)
+
+        window.run_command("show_panel", { "panel": "output.jasmineoutput" })
 
 ##
 # Classes
