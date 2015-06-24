@@ -52,9 +52,10 @@ Below is a list of all snippets currently supported on this package and the trig
 ### Spies
 - `spyOn`: s⇥
 - `spyOn.and.callThrough`: sct⇥
+- `spyOn.and.callFake`: scf⇥
 - `spyOn.and.returnValue`: srv⇥
 - `spyOn.and.stub`: ss⇥
-- `spyOn.and.throwError`: se⇥
+- `spyOn.and.throwError`: ste⇥
 - `spy.calls.all`: ca⇥
 - `spy.calls.allArgs`: caa⇥
 - `spy.calls.any`: ca⇥
