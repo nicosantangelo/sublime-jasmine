@@ -33,6 +33,7 @@ Below is a list of all snippets currently supported on this package and the trig
 - `expect().toHaveBeenCalledWith`: thbcw⇥
 - `expect().toMatch`: tm⇥
 - `expect().toThrow`: tt⇥
+- `expect().toThrowError`: tte⇥
 - `expect().not.toBe`: nb⇥
 - `expect().not.toBeCloseTo`: nct⇥
 - `expect().not.toBeDefined`: nd⇥
