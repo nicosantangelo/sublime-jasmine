@@ -11,8 +11,10 @@ Below is a list of all snippets currently supported on this package and the trig
 ### Specs
 - `describe`: desc⇥
 - `xdescribe`: xdesc⇥
+- `fdescribe`: fdesc⇥
 - `it`: it⇥
 - `xit`: xit⇥
+- `fit`: fit⇥
 - `afterEach`: ae⇥
 - `beforeEach`: be⇥
 
