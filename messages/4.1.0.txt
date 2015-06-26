@@ -1,7 +1,7 @@
 Recent Changes
 ==============
 
-New command! Toggle quotes
+In case you missed it! Jasmine has a new command, `Toggle quotes`
 
 This command will change the snippets from the current active quotes to it's counterpart.
 
@@ -20,7 +20,7 @@ describe('Name of the group', function() {
 
 IMPORTANT:
 
-1. After each toggle you may need to restart Sublime to the changes to take effect (sorry for that).
+1. After each toggle you may need to restart Sublime to the changes to take effect (sorry for that, Sublime limitation).
 
 2. If you're seeing the snippets twice, is because Package Control didn't update the package to the last version correctly. If it doesn't get fix automatically, please reinstall the package.
 
