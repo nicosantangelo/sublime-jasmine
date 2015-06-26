@@ -49,11 +49,11 @@ Below is a list of all snippets currently supported on this package and the trig
 - `expect().not.toEqual`: ne⇥
 - `expect().not.toMatch`: nm⇥
 - `expect().not.toThrow`: nt⇥
-- `jasmine.any`: a⇥
+- `jasmine.any`: any⇥
 - `jasmine.objectContaining`: oc⇥
 
 ### Spies
-- `spyOn`: s⇥
+- `spyOn`: so⇥
 - `spyOn.and.callThrough`: sct⇥
 - `spyOn.and.callFake`: scf⇥
 - `spyOn.and.returnValue`: srv⇥
