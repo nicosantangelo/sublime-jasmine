@@ -1,28 +1,27 @@
 Recent Changes
 ==============
 
-In case you missed it! Jasmine has a new command, `Toggle quotes`
+Hello! This changelog comes a little late, but Jasmine has a new command, `Toggle quotes`.
 
-This command will change the snippets from the current active quotes to it's counterpart.
+This command will change the snippets from the current active quotes to it's counterpart. For example, it will transform this:
 
-For example, it will transform this:
+        describe("Name of the group", function() {
+            
+        });
 
-describe("Name of the group", function() {
-    
-});
+to this:
 
-to this
+        describe('Name of the group', function() {
+            
+        });
 
-describe('Name of the group', function() {
-    
-});
+The bad news is that to make this work I had to work around the editor limitation for snippets, so:
 
+**IMPORTANT**:
 
-IMPORTANT:
+1. After each toggle you may need to restart Sublime to the changes to take effect (sorry for that).
 
-1. After each toggle you may need to restart Sublime to the changes to take effect (sorry for that, Sublime limitation).
-
-2. If you're seeing the snippets twice, is because Package Control didn't update the package to the last version correctly. If it doesn't get fix automatically, please reinstall the package.
+2. If you're seeing the snippets twice, is because Package Control didn't update the package to the last version correctly. If it doesn't get automatically fixed, please reinstall the package (sorry again).
 
 
 For more info, issues or feature requests you can go to: https://github.com/NicoSantangelo/sublime-jasmine
