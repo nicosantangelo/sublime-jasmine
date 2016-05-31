@@ -1,0 +1,36 @@
+Recent Changes
+==============
+
+Hello!
+
+Jasmine JS has some new snippets to support arrow functions!
+
+The tab triggers for the new snippets have an `e` appended to them, for example
+
+desc⇥
+
+        describe("Name of the group", function() {
+            
+        });
+
+desce⇥
+
+        describe('Name of the group', () => {
+            
+        });
+
+
+**IMPORTANT**:
+
+Because of the workaround this package uses to provide snippets with double and single quotes (using the `Toggle quotes` command),
+it's possible that you have to restart Sublime Text and maybe use toggle quotes again if you were using double quotes. Sorry!
+
+
+---------------------------------------------
+
+
+Thanks a lot to @feimosi for the suggestion!
+
+If you have any problem (or feature request) please go to: https://github.com/NicoSantangelo/sublime-jasmine
+
+That's all, thanks!
