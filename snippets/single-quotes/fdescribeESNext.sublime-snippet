@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+fdescribe('${1:Name of the group}', () => {
+    $2
+});]]>
+    </content>
+    <tabTrigger><![CDATA[fdesce]]></tabTrigger>
+    <scope>source.js</scope>
+    <description>focused describe</description>
+</snippet>
