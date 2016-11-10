@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[expect($1).not.toBeGreaterThan($2);$0]]>
-	</content>
-	<tabTrigger><![CDATA[ngt]]></tabTrigger>
-	<scope>source.js</scope>
-	<description>not.toBeGreaterThan</description>
-</snippet>

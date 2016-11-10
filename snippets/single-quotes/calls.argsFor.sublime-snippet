@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[${1:spy}.calls.argsFor(${2:call number})]]>
-	</content>
-	<tabTrigger><![CDATA[caf]]></tabTrigger>
-	<scope>source.js</scope>
-	<description>spy.calls.argsFor</description>
-</snippet>

@@ -1,5 +1,5 @@
 <snippet>
-    <content><![CDATA[spyOn(${1:object}, '${2:method}').and.callFake(${3:function() \{
+    <content><![CDATA[spyOn(${1:object}, "${2:method}").and.callFake(${3:function() \{
     $4
 \}});$0]]>
     </content>

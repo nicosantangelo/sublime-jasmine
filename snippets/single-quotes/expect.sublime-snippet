@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[expect($1)$0]]></content>
-	<tabTrigger><![CDATA[exp]]></tabTrigger>
-	<scope>source.js</scope>
-	<description>expect</description>
-</snippet>
