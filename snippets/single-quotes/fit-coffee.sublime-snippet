@@ -1,10 +1,10 @@
 <snippet>
     <content><![CDATA[
-fit("${1:should behave...}", function() {
-    $2
-});]]>
+fit '${1:should behave...}', ->
+  $2
+]]>
   </content>
   <tabTrigger><![CDATA[fit]]></tabTrigger>
-  <scope>source.js</scope>
+  <scope>source.coffee</scope>
   <description>focused it</description>
 </snippet>

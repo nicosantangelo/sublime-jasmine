@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+afterEach ->
+	$1
+]]>
+	</content>
+	<tabTrigger><![CDATA[ae]]></tabTrigger>
+	<scope>source.coffee</scope>
+	<description>afterEach</description>
+</snippet>
