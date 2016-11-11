@@ -1,5 +1,5 @@
 <snippet>
-    <content><![CDATA[
+  <content><![CDATA[
 fit("${1:should behave...}", () => {
   $2
 });]]>
