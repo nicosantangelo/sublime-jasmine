@@ -1,9 +1,9 @@
 <snippet>
-  <content><![CDATA[spyOn(${1:object}, '${2:method}').and.callFake(${3:function() \{
+  <content><![CDATA[spyOn(${1:object}, '${2:method}').and.callFake(${3:->
   $4
-\}});$0]]>
+})$0]]>
   </content>
   <tabTrigger><![CDATA[scf]]></tabTrigger>
-  <scope>source.js</scope>
+  <scope>source.coffee</scope>
   <description>spyOn.and.callFake</description>
 </snippet>
