@@ -6,7 +6,6 @@ Hello!
 Some minor things:
 - The indentation some snippets has been fixed
 - Using `Toggle quotes` only changes the necessary snippets making it faster
-- The package now supports CoffeeScript
 
 **IMPORTANT**:
 
