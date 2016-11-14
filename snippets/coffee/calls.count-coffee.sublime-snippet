@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[${1:spy}.calls.count()]]>
-	</content>
-	<tabTrigger><![CDATA[cc]]></tabTrigger>
-	<scope>source.coffee</scope>
-	<description>spy.calls.count</description>
-</snippet>
