@@ -3,20 +3,20 @@ Recent Changes
 
 Hello!
 
-Some minor things:
-- The indentation some snippets has been fixed
-- Using `Toggle quotes` only changes the necessary snippets making it faster
+Two improvements!
+- The indentation of some snippets has been fixed
+- Using the `Toggle quotes` command only changes the necessary snippets, making it much faster
 
 **IMPORTANT**:
 
-If you experience any problems it might be because of the workaround this package uses to provide snippets with double and single quotes (using the `Toggle quotes` command).
-Restarting Sublime Text should fix it and if that doesn't do it, please try running `Toggle quotes`.
+If you experience any problems it might be because of the workaround this package uses to provide snippets with both single and double quotes.
+Restarting Sublime Text should fix it (and maybe re-running `Toggle quotes`).
 
 
 ---------------------------------------------
 
 
-Thanks a lot to @basicallydan and @cdloh for the help on GitHub!
+Thanks a lot to @basicallydan for the help on GitHub!
 
 If you have any problem (or feature request) please go to: https://github.com/NicoSantangelo/sublime-jasmine
 
