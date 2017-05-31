@@ -1,0 +1,14 @@
+Recent Changes
+==============
+
+Hello!
+
+Sorry for the interruption but sublime jasmine just got a mini update.
+
+I wanted to remind you that if you experience any problems it might be because of the workaround this package uses to provide snippets.
+
+Restarting Sublime Text should fix it (and maybe re-running `Toggle quotes`).
+
+If you have any problems (or feature request) please go to: https://github.com/NicoSantangelo/sublime-jasmine
+
+That's all, thanks!
